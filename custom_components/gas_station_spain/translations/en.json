@@ -1,0 +1,45 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "Device is already configured"
+    },
+    "error": {
+      "cannot_connect": "Failed to connect",
+      "invalid_auth": "Invalid authentication",
+      "unknown": "Unexpected error"
+    },
+    "step": {
+      "user": {
+        "title": "Gasolineras de España.",
+        "data": {
+          "province": "Selecina la provincia",
+          "product": "Seleciona tipo de combustible"
+        }
+      },
+      "municipality": {
+        "title": "Gasolineras de España",
+        "data": {
+          "municipality": "Seleciona el municipio"
+        }
+      },
+      "station": {
+        "title": "Gasolineras de España",
+        "data": {
+          "station": "Selecciona la gasolinera"
+        }
+      }
+    }
+  },
+
+  "options": {
+    "step": {
+      "init": {
+        "title": "Gasolineras de España.",
+        "data": {
+          "email": "Email",
+          "password": "Password"
+        }
+      }
+    }
+  }
+}
