@@ -10,5 +10,3 @@ CONF_PROVINCE = "province"
 CONF_PRODUCT = "product"
 CONF_MUNICIPALITY = "municipality"
 CONF_STATION = "station"
-
-

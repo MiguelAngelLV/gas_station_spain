@@ -10,10 +10,22 @@
     },
     "step": {
       "user": {
+        "title": "Gasolineras de España.",
+        "data": {
+          "province": "Selecciona la provincia",
+          "product": "Seleciona tipo de combustible"
+        }
+      },
+      "municipality": {
         "title": "Gasolineras de España",
         "data": {
-          "email": "Email",
-          "password": "Contraseña"
+          "municipality": "Seleciona el municipio"
+        }
+      },
+      "station": {
+        "title": "Gasolineras de España",
+        "data": {
+          "station": "Selecciona la gasolinera"
         }
       }
     }
@@ -22,10 +34,10 @@
   "options": {
     "step": {
       "init": {
-        "title": "Gasolineras de España",
+        "title": "Gasolineras de España.",
         "data": {
           "email": "Email",
-          "password": "Contraseña"
+          "password": "Password"
         }
       }
     }

@@ -36,3 +36,10 @@ El asistente te irá solicitando los datos de la gasolinera y el tipo de combust
 Una vez configurado, tendrás la integración con la entidad que muestre el precio.
 
 Puedes añadir varias configuraciones para controlar varios precios (distintas gasolineras y distintos combustibles).
+
+
+## Origen de los Datos
+
+Los datos provienen de la [fuente oficial del Gobirno de España](https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/help).
+
+Este componente se limita a acceder a la API pública para mostrar guardar la información proporcionada.

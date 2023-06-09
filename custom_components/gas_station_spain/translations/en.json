@@ -10,22 +10,22 @@
     },
     "step": {
       "user": {
-        "title": "Gasolineras de España.",
+        "title": "Gas Stations of Spain",
         "data": {
-          "province": "Selecina la provincia",
-          "product": "Seleciona tipo de combustible"
+          "province": "Select province",
+          "product": "Select product"
         }
       },
       "municipality": {
-        "title": "Gasolineras de España",
+        "title": "Gas Stations of Spain",
         "data": {
-          "municipality": "Seleciona el municipio"
+          "municipality": "Select municipality"
         }
       },
       "station": {
-        "title": "Gasolineras de España",
+        "title": "Gas Stations of Spain",
         "data": {
-          "station": "Selecciona la gasolinera"
+          "station": "Select gas station"
         }
       }
     }
@@ -34,10 +34,8 @@
   "options": {
     "step": {
       "init": {
-        "title": "Gasolineras de España.",
+        "title": "Gas Stations of Spain",
         "data": {
-          "email": "Email",
-          "password": "Password"
         }
       }
     }
