@@ -33,6 +33,8 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_e
     station = entry.data[CONF_STATION]
     product = entry.data[CONF_PRODUCT]
 
+    _LOGGER.info(f"Creating Gas Station Spain sensor with station={station} and product={product}")
+
     coordinator = GasStationCoordinator(hass, municipality, station, product)
     await coordinator.async_config_entry_first_refresh()
 
@@ -51,6 +53,7 @@ class GasStationCoordinator(DataUpdateCoordinator):
 
     async def _async_update_data(self):
         self._price = await GasStationApi.get_gas_price(self._station, self._municipality, self._product)
+        _LOGGER.debug(f"Updated station={self._station} and product={self._product} with price={self._price}")
         return self._price
 
 
@@ -64,7 +67,7 @@ class GasStationSensor(CoordinatorEntity, SensorEntity):
         self._attr_unique_id = unique_id
         self.entity_description = SensorEntityDescription(
             key=name,
-            icon="mdi:gas_station",
+            icon="mdi:gas-station",
             native_unit_of_measurement=CURRENCY_EURO,
             state_class=STATE_CLASS_MEASUREMENT
         )

@@ -1,9 +1,9 @@
 # Componente Gas Station Spain
 
 
-## ¿Qué es Gas Station Spain?
+## ¿Qué es Gasolineras de España?
 
-Es un componente para [Home Assistant](https://home-assistant.io/) que permite obtener el precio del combustible de las distintas
+«Gasolineras de España» Es un componente para [Home Assistant](https://home-assistant.io/) que permite obtener el precio del combustible de las distintas
 gasolineras de España para visualziarlo en tu instalación de Home Assistant.
 
 
