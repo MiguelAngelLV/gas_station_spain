@@ -33,9 +33,18 @@ Una vez instalado, ve a _Dispositivos y Servicios -> Añadir Integración_ y bus
 
 El asistente te irá solicitando los datos de la gasolinera y el tipo de combustible. 
 
+![Provincia](images/wizard1.png)
+
+![Gasolinera](images/wizard2.png)
+
+
 Una vez configurado, tendrás la integración con la entidad que muestre el precio.
 
+![Chart](images/chart.png)
+
+
 Puedes añadir varias configuraciones para controlar varios precios (distintas gasolineras y distintos combustibles).
+
 
 
 ## Origen de los Datos
@@ -43,3 +52,8 @@ Puedes añadir varias configuraciones para controlar varios precios (distintas g
 Los datos provienen de la [fuente oficial del Gobirno de España](https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/help).
 
 Este componente se limita a acceder a la API pública para mostrar guardar la información proporcionada.
+
+
+## Videotutorial
+
+[![Gasolineras de España](http://img.youtube.com/vi/wu5H5-QZyyA/0.jpg)](http://www.youtube.com/watch?v=wu5H5-QZyyA)
