@@ -8,6 +8,8 @@ gasolineras de España para visualziarlo en tu instalación de Home Assistant.
 
 
 
+
+
 ## Instalación
 
 Puedes instalar el componente usando HACS:
@@ -46,14 +48,15 @@ Una vez configurado, tendrás la integración con la entidad que muestre el prec
 Puedes añadir varias configuraciones para controlar varios precios (distintas gasolineras y distintos combustibles).
 
 
-
-## Origen de los Datos
-
-Los datos provienen de la [fuente oficial del Gobirno de España](https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/help).
-
-Este componente se limita a acceder a la API pública para mostrar guardar la información proporcionada.
-
-
 ## Videotutorial
 
 [![Gasolineras de España](http://img.youtube.com/vi/wu5H5-QZyyA/0.jpg)](http://www.youtube.com/watch?v=wu5H5-QZyyA)
+
+
+## Origen de los Datos
+
+Los datos provienen de la [fuente oficial del Gobierno de España](https://sedeaplicaciones.minetur.gob.es/ServiciosRESTCarburantes/PreciosCarburantes/help).
+
+Este componente se limita a acceder a la API pública para mostrar la información proporcionada.
+
+
