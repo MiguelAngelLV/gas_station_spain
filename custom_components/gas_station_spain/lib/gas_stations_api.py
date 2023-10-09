@@ -116,6 +116,6 @@ class GasStationApi:
             Product(name="Gasóleo B", id="6"),
             Product(name="Gases licuados del petróleo", id="17"),
             Product(name="Gas Natural Comprimido", id="18"),
-            Product(name="Gas Natural Comprimidoo", id="19"),
+            Product(name="Gas Natural Licuado", id="19"),
             Product(name="Biodiesel", id="8"),
         ]
