@@ -109,13 +109,17 @@ class GasStationApi:
     async def get_products():
         return [
             Product(name="Gasolina 95 E5", id="1"),
-            Product(name="Gasolina 95 E5 Premium", id="20"),
             Product(name="Gasolina 98 E5", id="3"),
             Product(name="Gasóleo A", id="4"),
             Product(name="Gasóleo Premium", id="5"),
             Product(name="Gasóleo B", id="6"),
-            Product(name="Gases licuados del petróleo", id="17"),
-            Product(name="Gas Natural Comprimido", id="18"),
-            Product(name="Gas Natural Licuado", id="19"),
+            Product(name="Gasóleo C", id="7"),
             Product(name="Biodiesel", id="8"),
+            Product(name="Bioetanol", id="16"),
+            Product(name="Gases licuados del petróleo", id="17"),
+            Product(name="Gas natural comprimido", id="18"),
+            Product(name="Gas natural licuado", id="19"),
+            Product(name="Gasolina 95 E5 Premium ", id="20"),
+            Product(name="Gasolina 98 E10", id="21"),
+            Product(name="Gasolina 95 E10", id="23"),
         ]
