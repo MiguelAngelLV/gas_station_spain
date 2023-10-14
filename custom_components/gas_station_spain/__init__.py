@@ -5,13 +5,14 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
 
-from .const import DOMAIN
+from .const import DOMAIN, CONF_FIXED_DISCOUNT, CONF_PERCENTAGE_DISCOUNT, CONF_SHOW_IN_MAP
 
 PLATFORMS: list[Platform] = [Platform.SENSOR]
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
+    entry.async_on_unload(entry.add_update_listener(_async_update_options))
     return True
 
 
@@ -25,3 +26,20 @@ async def _async_update_options(hass: HomeAssistant, config_entry: ConfigEntry) 
     # update entry replacing data with new options
     hass.config_entries.async_update_entry(config_entry, data={**config_entry.data, **config_entry.options})
     await hass.config_entries.async_reload(config_entry.entry_id)
+
+
+async def async_migrate_entry(hass: HomeAssistant, config_entry):
+    version = config_entry.version
+
+    if version == 1:
+        data = {
+            **config_entry.data,
+            CONF_FIXED_DISCOUNT: 0.0,
+            CONF_PERCENTAGE_DISCOUNT: 0.0,
+            CONF_SHOW_IN_MAP: False
+        }
+
+        hass.config_entries.async_update_entry(config_entry, data=data)
+        config_entry.version = 2
+
+    return True

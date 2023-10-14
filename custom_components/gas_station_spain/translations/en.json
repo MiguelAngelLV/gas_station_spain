@@ -27,15 +27,25 @@
         "data": {
           "station": "Select gas station"
         }
+      },
+      "options": {
+        "title": "Gas Stations of Spain",
+        "data": {
+          "fixed_discount": "Fixed discount",
+          "percentage_discount": "Percentage discount",
+          "show_in_map": "Show in map"
+        }
       }
     }
   },
-
   "options": {
     "step": {
       "init": {
         "title": "Gas Stations of Spain",
         "data": {
+          "fixed_discount": "Fixed discount",
+          "percentage_discount": "Percentage discount",
+          "show_in_map": "Show in map"
         }
       }
     }

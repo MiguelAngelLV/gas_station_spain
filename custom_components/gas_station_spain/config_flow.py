@@ -12,8 +12,13 @@ from homeassistant.helpers.selector import (
     SelectSelector,
     SelectSelectorConfig,
     SelectOptionDict,
-    SelectSelectorMode
+    SelectSelectorMode,
+    NumberSelectorConfig,
+    NumberSelector,
+    NumberSelectorMode,
+
 )
+from homeassistant.helpers import config_validation as cv
 
 from .const import *
 from .lib.gas_stations_api import GasStationApi
@@ -28,11 +33,19 @@ class PlaceholderHub:
 
 
 class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
-    VERSION = 1
+    VERSION = 2
     province_id: str
     product_id: str
     municipality_id: str
     station_id: str
+    show_in_map: bool
+    fixed_discount: float
+    percentage_discount: float
+
+    @staticmethod
+    @callback
+    def async_get_options_flow(config_entry):
+        return OptionFlowHandler(config_entry)
 
     async def async_step_user(self, user_input: dict[str, Any] | None = None) -> FlowResult:
         if user_input is not None:
@@ -74,18 +87,10 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
     async def async_step_station(self, user_input: dict[str, Any] | None = None):
         if user_input is not None:
             self.station_id = user_input[CONF_STATION]
-            name = await GasStationApi.get_station_name(station_id=self.station_id, municipality_id=self.municipality_id, product_id=self.product_id)
-
-            await self.async_set_unique_id(name.id)
-
-            return self.async_create_entry(title=name.name, data={
-                CONF_PRODUCT: self.product_id,
-                CONF_MUNICIPALITY: self.municipality_id,
-                CONF_STATION: user_input[CONF_STATION]
-            })
+            return await self.async_step_options()
 
         stations = await GasStationApi.get_gas_stations(municipality_id=self.municipality_id, product_id=self.product_id)
-        options = list(map(lambda p: SelectOptionDict(label=p.name + " - "+p.address, value=p.id), stations))
+        options = list(map(lambda p: SelectOptionDict(label=p.name + " - " + p.address, value=p.id), stations))
         schema = vol.Schema({
             vol.Required(CONF_STATION): SelectSelector(
                 SelectSelectorConfig(options=options, multiple=False, mode=SelectSelectorMode.DROPDOWN)
@@ -93,3 +98,66 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         })
         return self.async_show_form(step_id="station", data_schema=schema)
 
+    async def async_step_options(self, user_input: dict[str, Any] | None = None):
+        if user_input is not None:
+            self.show_in_map = user_input[CONF_SHOW_IN_MAP]
+            self.fixed_discount = user_input[CONF_FIXED_DISCOUNT]
+            self.percentage_discount = user_input[CONF_PERCENTAGE_DISCOUNT]
+
+            name = await GasStationApi.get_station_name(station_id=self.station_id, municipality_id=self.municipality_id, product_id=self.product_id)
+
+            await self.async_set_unique_id(name.id)
+            return self.async_create_entry(title=name.name, data={
+                CONF_PRODUCT: self.product_id,
+                CONF_MUNICIPALITY: self.municipality_id,
+                CONF_STATION: self.station_id,
+                CONF_FIXED_DISCOUNT: self.fixed_discount,
+                CONF_PERCENTAGE_DISCOUNT: self.percentage_discount,
+                CONF_SHOW_IN_MAP: self.show_in_map
+            })
+
+        schema = vol.Schema({
+            vol.Required(CONF_FIXED_DISCOUNT, default=0): NumberSelector(
+                config=NumberSelectorConfig(min=0, max=1, step=0.01, unit_of_measurement="€", mode=NumberSelectorMode.SLIDER),
+            ),
+            vol.Required(CONF_PERCENTAGE_DISCOUNT, default=0): NumberSelector(
+                NumberSelectorConfig(min=0, max=100, step=0.01, unit_of_measurement="%", mode=NumberSelectorMode.SLIDER)
+            ),
+            vol.Optional(CONF_SHOW_IN_MAP, default=False): cv.boolean
+        })
+        return self.async_show_form(step_id="options", data_schema=schema)
+
+
+class OptionFlowHandler(config_entries.OptionsFlow):
+    def __init__(self, config_entry):
+        self.config_entry = config_entry
+
+    async def async_step_init(self, user_input=None):
+        """Manage the options."""
+        if user_input is not None:
+            return self.async_create_entry(title="Gasolineras de España", data=user_input)
+
+        # Fill options with entry data
+        fixed = self.config_entry.options.get(
+            CONF_FIXED_DISCOUNT, self.config_entry.data[CONF_FIXED_DISCOUNT]
+        )
+        percentage = self.config_entry.options.get(
+            CONF_PERCENTAGE_DISCOUNT, self.config_entry.data[CONF_PERCENTAGE_DISCOUNT]
+        )
+
+        show_in_map = self.config_entry.options.get(
+            CONF_SHOW_IN_MAP, self.config_entry.data[CONF_SHOW_IN_MAP]
+        )
+
+        schema = vol.Schema({
+            vol.Required(CONF_FIXED_DISCOUNT, default=float(fixed)): NumberSelector(
+                config=NumberSelectorConfig(min=0, max=1, step=0.01, unit_of_measurement="€", mode=NumberSelectorMode.SLIDER),
+            ),
+            vol.Required(CONF_PERCENTAGE_DISCOUNT, default=float(percentage)): NumberSelector(
+                NumberSelectorConfig(min=0, max=100, step=0.01, unit_of_measurement="%", mode=NumberSelectorMode.SLIDER)
+            ),
+            vol.Optional(CONF_SHOW_IN_MAP, default=float(show_in_map)): cv.boolean
+
+        })
+
+        return self.async_show_form(step_id="init", data_schema=schema)

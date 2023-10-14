@@ -24,6 +24,8 @@ class GasStation:
     name: str
     address: str
     product_name: str
+    latitude: float
+    longitude: float
 
 
 @dataclass
@@ -67,11 +69,19 @@ class GasStationApi:
                             GasStation(name=s["Rótulo"].title(),
                                        address=s["Dirección"].title(),
                                        id=s["IDEESS"],
-                                       product_name=product_name),
+                                       product_name=product_name,
+                                       latitude=float(s["Latitud"].replace(',', '.')),
+                                       longitude=float(s["Longitud (WGS84)"].replace(',', '.')),
+                                       ),
                             json['ListaEESSPrecio']))
 
         stations.sort(key=lambda x: x.name)
         return stations
+
+    @staticmethod
+    async def get_gas_station(municipality_id, product_id, gas_station_id):
+        stations = await GasStationApi.get_gas_stations(municipality_id, product_id)
+        return next(filter(lambda p: p.id == gas_station_id, stations))
 
     @staticmethod
     async def get_gas_price(station_id, municipality_id, product_id):
@@ -103,7 +113,7 @@ class GasStationApi:
         if product is None:
             return None
 
-        return GasStationProduct(name=f"{product.name}, {gas_station['Rótulo'].title()}", id=f"{product_id}-{station_id}")
+        return GasStationProduct(name=f"{product.name}, {gas_station['Rótulo'].title()} ({gas_station['Dirección'].title()})", id=f"{product_id}-{station_id}")
 
     @staticmethod
     async def get_products():

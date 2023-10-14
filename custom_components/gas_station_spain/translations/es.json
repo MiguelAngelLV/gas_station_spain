@@ -27,17 +27,24 @@
         "data": {
           "station": "Selecciona la gasolinera"
         }
+      },
+      "options": {
+        "title": "Gasolineras de España",
+        "data": {
+          "fixed_discount": "Descuento fijo",
+          "percentage_discount": "Porcentaje de descuento",
+          "show_in_map": "Mostrar en el mapa"
+        }
       }
     }
   },
-
   "options": {
     "step": {
       "init": {
-        "title": "Gasolineras de España.",
         "data": {
-          "email": "Email",
-          "password": "Password"
+          "fixed_discount": "Descuento fijo",
+          "percentage_discount": "Porcentaje de descuento",
+          "show_in_map": "Mostrar en el mapa"
         }
       }
     }
