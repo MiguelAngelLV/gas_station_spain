@@ -4,7 +4,7 @@
 ## ¿Qué es Gasolineras de España?
 
 «Gasolineras de España» Es un componente para [Home Assistant](https://home-assistant.io/) que permite obtener el precio del combustible de las distintas
-gasolineras de España para visualziarlo en tu instalación de Home Assistant.
+gasolineras de España para visualizarlo en tu instalación de Home Assistant.
 
 
 
