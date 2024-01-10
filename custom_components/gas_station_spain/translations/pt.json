@@ -1,0 +1,53 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "Equipamento já configurado"
+    },
+    "error": {
+      "cannot_connect": "Falha na ligação",
+      "invalid_auth": "Falha na autenticação",
+      "unknown": "Erro desconhecido"
+    },
+    "step": {
+      "user": {
+        "title": "Estações de abastecimento em Espanha",
+        "data": {
+          "province": "Provincia",
+          "product": "Produto"
+        }
+      },
+      "municipality": {
+        "title": "Estações de abastecimento em Espanha",
+        "data": {
+          "municipality": "Selecione o municipio"
+        }
+      },
+      "station": {
+        "title": "Estações de abastecimento em Espanha",
+        "data": {
+          "station": "Select gas station"
+        }
+      },
+      "options": {
+        "title": "Estações de abastecimento em Espanha",
+        "data": {
+          "fixed_discount": "Desconto Fixo",
+          "percentage_discount": "Percentagem de desconto",
+          "show_in_map": "Mostrar no mapa"
+        }
+      }
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Estações de abastecimento em Espanha",
+        "data": {
+          "fixed_discount": "Desconto Fixo",
+          "percentage_discount": "Percentagem de desconto",
+          "show_in_map": "Mostrar no mapa"
+        }
+      }
+    }
+  }
+}
