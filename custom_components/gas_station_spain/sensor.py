@@ -19,7 +19,7 @@ from homeassistant.const import (
 )
 
 from homeassistant.components.sensor import (
-    SensorEntityDescription, SensorEntity, STATE_CLASS_MEASUREMENT
+    SensorEntityDescription, SensorEntity, SensorStateClass
 )
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, callback
@@ -88,7 +88,7 @@ class GasStationSensor(CoordinatorEntity, SensorEntity):
             key=name,
             icon="mdi:gas-station",
             native_unit_of_measurement=CURRENCY_EURO,
-            state_class=STATE_CLASS_MEASUREMENT
+            state_class=SensorStateClass.MEASUREMENT
         )
 
     async def async_added_to_hass(self) -> None:
