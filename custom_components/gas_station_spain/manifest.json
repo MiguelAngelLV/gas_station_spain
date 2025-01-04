@@ -7,5 +7,5 @@
   "iot_class": "cloud_polling",
   "issue_tracker": "https://github.com/MiguelAngelLV/gas_station_spain/issues",
   "requirements": [],
-  "version": "0.8.0"
+  "version": "1.4.0"
 }
