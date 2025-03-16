@@ -8,7 +8,6 @@ from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
 
 from .const import (
-    DOMAIN,
     CONF_FIXED_DISCOUNT,
     CONF_PERCENTAGE_DISCOUNT,
     CONF_SHOW_IN_MAP,
