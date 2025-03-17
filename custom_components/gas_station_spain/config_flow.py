@@ -23,7 +23,7 @@ from homeassistant.helpers.selector import (
 )
 from homeassistant.helpers import config_validation as cv
 
-import gas_station_spain as gss
+import gas_station_spain_api as gss
 
 from .const import (
     DOMAIN,

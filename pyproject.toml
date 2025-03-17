@@ -11,7 +11,7 @@ repository = "https://github.com/miguelangellv/gas-station-spain"
 requires-python = ">=3.13"
 dependencies = [
     "homeassistant>=2025.2.0",
-    "gas-station-spain==1.1.0"
+    "gas-station-spain-api==1.2.0"
 ]
 
 [project.urls]

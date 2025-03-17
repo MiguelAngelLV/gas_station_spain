@@ -23,7 +23,7 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
-import gas_station_spain as gss
+import gas_station_spain_api as gss
 
 from .const import (
     CONF_STATION,
