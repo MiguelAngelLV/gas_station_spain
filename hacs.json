@@ -1,6 +1,6 @@
 {
-    "name": "Gas Stations Spain",
-    "render_readme": true,
-    "homeassistant": "2023.1.0",
-    "country": "ES"
+  "name": "Gas Stations Spain",
+  "render_readme": true,
+  "homeassistant": "2023.1.0",
+  "country": "ES"
 }

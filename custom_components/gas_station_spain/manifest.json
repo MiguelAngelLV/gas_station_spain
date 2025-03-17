@@ -6,6 +6,6 @@
   "documentation": "https://github.com/MiguelAngelLV/gas_station_spain",
   "iot_class": "cloud_polling",
   "issue_tracker": "https://github.com/MiguelAngelLV/gas_station_spain/issues",
-  "requirements": [],
-  "version": "1.4.0"
+  "requirements": ["gas-station-spain-api==1.2.0"],
+  "version": "2.0.0"
 }

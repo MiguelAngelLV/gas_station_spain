@@ -1,0 +1,82 @@
+[project]
+name = "ha-gas-station-spain"
+version = "2.0"
+description = "Componente para Home Assistant que muestra precio actual del combustible en las distintas gasolineras de España"
+authors = [
+    { name = "Miguel Ángel López", email = "miguel.angel.lopez.vicente@gmail.com" }
+]
+license = "MIT"
+readme = "README.md"
+repository = "https://github.com/miguelangellv/gas-station-spain"
+requires-python = ">=3.13"
+dependencies = [
+    "homeassistant>=2025.2.0",
+    "gas-station-spain-api==1.2.0"
+]
+
+[project.urls]
+Homepage = "https://github.com/miguelangel_lv/gas_station_spain/"
+Changelog = "https://github.com/miguelangel_lv/gas_station_spain/releases"
+Issues = "https://github.com/miguelangel_lv/gas_station_spain/issues"
+Repository = "https://github.com/miguelangel_lv/gas_station_spain/spook"
+
+
+[tool.ruff.lint]
+ignore = [
+  "A005", # It is just wrong
+  "ANN101", # Self... explanatory
+  "ANN401", # Opiniated warning on disallowing dynamically typed expressions
+  "D203", # Conflicts with other rules
+  "D213", # Conflicts with other rules
+  "RUF012", # Just broken
+  "TID252", # Relative imports
+
+  # Formatter conflicts
+  "COM812",
+  "COM819",
+  "D206",
+  "E501",
+  "ISC001",
+  "Q000",
+  "Q001",
+  "Q002",
+  "Q003",
+  "W191",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["custom_components/ha_gas_station_spain"]
+
+[tool.ruff]
+line-length = 140
+src = ["custom_components/ha_gas_station_spain"]
+
+[tool.pylint.'MESSAGES CONTROL']
+max-line-length = 140
+
+[tool.ruff.lint.flake8-import-conventions.extend-aliases]
+"homeassistant.helpers.area_registry" = "ar"
+"homeassistant.helpers.config_validation" = "cv"
+"homeassistant.helpers.device_registry" = "dr"
+"homeassistant.helpers.entity_registry" = "er"
+"homeassistant.helpers.issue_registry" = "ir"
+voluptuous = "vol"
+
+[tool.ruff.lint.isort]
+force-sort-within-sections = true
+known-first-party = [
+    "homeassistant",
+]
+combine-as-imports = true
+
+[tool.uv]
+dev-dependencies = [
+    "pre-commit>=3.6.0",
+    "pre-commit-hooks>=4.5.0",
+    "pylint>=3.1.0",
+    "ruff>=0.3.2",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
