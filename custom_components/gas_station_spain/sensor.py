@@ -71,10 +71,10 @@ class GasStationCoordinator(DataUpdateCoordinator):
             name="Gas Station",
             update_interval=timedelta(hours=UPDATE_INTERVAL),
         )
+        self._price = None
         self._address = None
         self._latitude = None
         self._longitude = None
-        self.original_price = None
         self._gas_station_id = gas_station_id
         self._product_id = product_id
 
@@ -86,10 +86,14 @@ class GasStationCoordinator(DataUpdateCoordinator):
         await super().async_config_entry_first_refresh()
 
     async def _async_update_data(self):
-        price = await gss.get_price(station_id=self._gas_station_id, product_id=self._product_id)
-        _LOGGER.debug("Updated station=%s and product=%s with original price=%s", self._gas_station_id, self._product_id, price)
+        try:
+            self._price = await gss.get_price(station_id=self._gas_station_id, product_id=self._product_id)
+            _LOGGER.debug("Updated station=%s and product=%s with original price=%s", self._gas_station_id, self._product_id, self._price)
+        except Exception:  # pylint: disable=W0718
+            _LOGGER.exception("Updated station=%s and product=%s", self._gas_station_id, self._product_id)
+
         return {
-            "price": price,
+            "price": self._price,
             "address": self._address,
             "latitude": self._latitude,
             "longitude": self._longitude,

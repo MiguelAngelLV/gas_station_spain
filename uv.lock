@@ -662,8 +662,8 @@ wheels = [
 ]
 
 [[package]]
-name = "gas-station-spain"
-version = "1.1"
+name = "gas-station-spain-api"
+version = "1.2"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "aiohttp" },
@@ -671,9 +671,9 @@ dependencies = [
     { name = "pytest" },
     { name = "tenacity" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/16/94/f2a56d2f88741090b88ac90bf041645dc51487c02765dbebae7fe2113e78/gas_station_spain-1.1.tar.gz", hash = "sha256:9f8f20517c9cd02eaae6475514a9cb1b81b80702b50e539c52b2626bf9ba5b4f", size = 3942 }
+sdist = { url = "https://files.pythonhosted.org/packages/95/47/d79935934e09c6fcfc6774352a40fedf7831469253ce6c1631650f86aaa2/gas_station_spain_api-1.2.tar.gz", hash = "sha256:aeeff94d38c54c4040a8ca99f8824a3d4b20bbc301e9cf69faef2722747ef1f7", size = 3950 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/81/53/af081cc618d0a6d75cc8ab08b97eeb67e29177ac8bf30a1e07e44c018adb/gas_station_spain-1.1-py3-none-any.whl", hash = "sha256:9ed160995db84918f45c60ee8bc7aa4ecf920d32ecf63314b36ed10dbe4b31a3", size = 4329 },
+    { url = "https://files.pythonhosted.org/packages/4e/e7/a2451a4e3b24c2c07e34f1ed68e154522899e4b87d6ce33af75b89da5bfe/gas_station_spain_api-1.2-py3-none-any.whl", hash = "sha256:5f3548bb13b54851644536f8d4faa0c8a24a880c1d34bab52ba5dd45268db3a5", size = 4397 },
 ]
 
 [[package]]
@@ -714,7 +714,7 @@ name = "ha-gas-station-spain"
 version = "2.0"
 source = { editable = "." }
 dependencies = [
-    { name = "gas-station-spain" },
+    { name = "gas-station-spain-api" },
     { name = "homeassistant" },
 ]
 
@@ -728,7 +728,7 @@ dev = [
 
 [package.metadata]
 requires-dist = [
-    { name = "gas-station-spain", specifier = "==1.1.0" },
+    { name = "gas-station-spain-api", specifier = "==1.2.0" },
     { name = "homeassistant", specifier = ">=2025.2.0" },
 ]
 
